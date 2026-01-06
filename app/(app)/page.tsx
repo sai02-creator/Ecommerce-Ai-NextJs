@@ -1,5 +1,6 @@
 import { CategoryTiles } from "@/components/CategoryTiles";
 import { FeaturedCarousel } from "@/components/FeaturedCarousel";
+import { FeaturedCarouselSkeleton } from "@/components/FeaturedCarouselSkeleton";
 import { sanityFetch } from "@/sanity/lib/live";
 import { ALL_CATEGORIES_QUERY } from "@/sanity/queries/categories";
 
@@ -65,7 +66,7 @@ export default async function HomePage({ searchParams }: PageProps) {
 
   return (
     <div className="">
-      <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<FeaturedCarouselSkeleton />}>
         <FeaturedCarousel products={featuredProducts} />
       </Suspense>
 
