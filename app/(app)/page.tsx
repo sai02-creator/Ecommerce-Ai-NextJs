@@ -1,6 +1,8 @@
+import { CategoryTiles } from "@/components/CategoryTiles";
 import { FeaturedCarousel } from "@/components/FeaturedCarousel";
 import { sanityFetch } from "@/sanity/lib/live";
 import { ALL_CATEGORIES_QUERY } from "@/sanity/queries/categories";
+
 import {
   FEATURED_PRODUCTS_QUERY,
   FILTER_PRODUCTS_BY_NAME_QUERY,
@@ -79,6 +81,10 @@ export default async function HomePage({ searchParams }: PageProps) {
         </div>
       </div>
 
+      {/* Category Tiles - Full width */}
+      <div className="mt-6">
+        <CategoryTiles categories={categories}activeCategory={categorySlug || undefined} />
+      </div>
       {/* Category Title */}
 
       {/* Product Section */}
