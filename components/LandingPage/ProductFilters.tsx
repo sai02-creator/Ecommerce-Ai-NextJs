@@ -285,7 +285,7 @@ export function ProductFilters({ categories }: ProductFiltersProps) {
       {/* Price Range */}
       <div>
         <FilterLabel isActive={isPriceActive} filterKey="price">
-          Price Range: £{priceRange[0]} - £{priceRange[1]}
+          Price Range: ${priceRange[0]} - ${priceRange[1]}
         </FilterLabel>
         <Slider
           min={0}
@@ -299,7 +299,11 @@ export function ProductFilters({ categories }: ProductFiltersProps) {
               maxPrice: max < 5000 ? max : null,
             })
           }
-          className={`mt-4 ${isPriceActive ? "[&_[role=slider]]:border-amber-500 [&_[role=slider]]:ring-amber-500" : ""}`}
+          className={`mt-4 ${
+            isPriceActive
+              ? "[&_[role=slider]]:border-amber-500 [&_[role=slider]]:ring-amber-500"
+              : ""
+          }`}
         />
       </div>
 
