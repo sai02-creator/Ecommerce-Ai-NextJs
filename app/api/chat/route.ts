@@ -12,7 +12,8 @@ export async function POST(request: Request) {
   const agent = createShoppingAgent({ userId });
 
   return createAgentUIStreamResponse({
-    agent,
-    messages,
-  });
+  agent,
+  uiMessages: messages,
+});
+
 }
