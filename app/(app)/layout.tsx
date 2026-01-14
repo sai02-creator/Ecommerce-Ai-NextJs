@@ -1,9 +1,13 @@
+import { CartSheet } from "@/components/CartSheet";
+import { ChatSheet } from "@/components/ChatSheet";
 import { Header } from "@/components/Header";
 import { CartStoreProvider } from "@/lib/store/cart-store-provider";
 import { ChatStoreProvider } from "@/lib/store/chat-store-provider";
 import { SanityLive } from "@/sanity/lib/live";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
+import { AppShell } from "@/components/AppShell";
+
 
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -11,13 +15,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <ClerkProvider>
       <CartStoreProvider>
         <ChatStoreProvider>
+          <AppShell>
         <Header />
           <main>{children}</main>
+          </AppShell>
+          <CartSheet />
+          <ChatSheet />
           <Toaster position="bottom-center"/> 
           <SanityLive />
           </ChatStoreProvider>
       </CartStoreProvider>
-
     </ClerkProvider>
   );
 }
