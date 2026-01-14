@@ -100,6 +100,14 @@ function TrendIcon({ trend }: { trend: "up" | "down" | "stable" }) {
   return <Minus className="h-4 w-4 text-zinc-400" />;
 }
 
+// --- Helper to format AUD ---
+function formatAUD(value: number | string) {
+  return `A$${Number(value).toLocaleString("en-AU", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })}`;
+}
+
 export function AIInsightsCard() {
   const [data, setData] = useState<InsightsResponse | null>(null);
   const [loading, setLoading] = useState(true);
@@ -222,11 +230,7 @@ export function AIInsightsCard() {
             Revenue (7d)
           </p>
           <p className="mt-1 text-lg font-bold text-zinc-900 dark:text-zinc-100">
-            £
-            {Number(rawMetrics.currentRevenue).toLocaleString("en-GB", {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            })}
+            {formatAUD(rawMetrics.currentRevenue)}
           </p>
           <p
             className={cn(
@@ -256,7 +260,7 @@ export function AIInsightsCard() {
             Avg Order
           </p>
           <p className="mt-1 text-lg font-bold text-zinc-900 dark:text-zinc-100">
-            £{rawMetrics.avgOrderValue}
+            {formatAUD(rawMetrics.avgOrderValue)}
           </p>
           <p className="text-xs text-zinc-500">Per order</p>
         </div>
